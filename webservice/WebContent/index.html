@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta  http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>邮件发送</title>
+
+
+</head>
+<body>
+<script type="text/javascript">
+function loginClick() {
+	 var data;
+     //SOAP 1.1 请求报文格式，1.2在网上可以找到
+     data = '<?xml version="1.0" encoding="utf-8"?>'; 
+     data = data + '<soap:Envelope  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'; 
+     data = data + '<soap:Body>'; 
+     data = data + '<validateEmailAddress xmlns="http://web/">';//这里就是发布的方法名和xml文档中的命名空间地址（图中画线部分）
+     data = data + '</validateEmailAddress>';
+     data = data + '</86422835@qq.com>'; 
+     data = data + '</soap:Envelope>'; 
+
+     var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
+     var URL="http://localhost:9092/Service/webservice?wsdl";
+     xmlhttp.Open("POST",URL, false); 
+     xmlhttp.SetRequestHeader ("Content-Type","text/xml; charset=utf-8"); //SOAP 1.1为text/xml ； 1.2为 application/soap+xml
+     xmlhttp.Send(data); 
+}
+function loginClick()1 {
+	 var data;
+    //SOAP 1.1 请求报文格式，1.2在网上可以找到
+    data = '<?xml version="1.0" encoding="utf-8"?>'; 
+    data = data + '<soap:Envelope  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'; 
+    data = data + '<soap:Body>'; 
+    data = data + '<sendEmail xmlns="http://web/">';//这里就是发布的方法名和xml文档中的命名空间地址（图中画线部分）
+    data = data +'</sendEmail>';
+    data = data + '</soap:Body>'; 
+    data = data + '</soap:Envelope>'; 
+
+    var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
+    var URL="http://localhost:9092/Service/webservice?wsdl";
+    xmlhttp.Open("POST",URL, false); 
+    xmlhttp.SetRequestHeader ("Content-Type","text/xml; charset=utf-8"); //SOAP 1.1为text/xml ； 1.2为 application/soap+xml
+    xmlhttp.Send(data); 
+}
+</script>
+<table>
+					<tr>
+                        <td width="70" height="20" class="login_td">接收者：</td>
+                        <td width="115" height="20" class="login_td"><input
+                            class="login_input" type="text" name="username"
+                        ></td>
+                        <td height="20" colspan="2" align="center">
+                           <input type="button" value="验证" onClick="loginClick()"
+                           
+                        ></input></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td height="20" class="login_td">信    息：</td>
+                        <td width="115" height="20" class="login_td"><input
+                            type="text" name="password" class="login_input"></td>
+                        <td height="20" colspan="2" align="center">
+                           <input type="button" value="发送"  onClick="loginClick1()"
+                        ></input></td>    
+                        <td></td>
+                    </tr>
+</table>
+</body>
+</html>
